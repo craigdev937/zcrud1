@@ -45,7 +45,17 @@ async (req, res, next) => {
     }
 };
 
-
+export const UserAccess: express.RequestHandler =
+(req: any, res, next) => {
+    try {
+        console.log("access");
+        console.log(req.user);
+        res.status(200).json(req.user);
+    } catch (error) {
+        res.status(500).json(error);
+        next(error);
+    }
+};
 
 
 
