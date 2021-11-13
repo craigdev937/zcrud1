@@ -1,8 +1,10 @@
 import express from "express";
-import { HomeIndex } from "../controllers/userCon";
+import { verifyPass } from "../middleware/VerifyPass";
+import { encryptPass } from "../middleware/EncryptPass";
+import { Register } from "../controllers/userCon";
 
 export const userRt: express.Router = express.Router();
-    userRt.get("/", HomeIndex);
+    userRt.post("/register", encryptPass, Register);
 
 
 
