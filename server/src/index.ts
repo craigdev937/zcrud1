@@ -4,6 +4,7 @@ import logger from "morgan";
 import mongoose from "mongoose";
 import { config } from "./config/keys";
 import { userRt } from "./routes/userRt";
+import { todoRt } from "./routes/todoRt";
 
 (async () => {
     await mongoose.connect(config.MONGO_URI)
@@ -32,6 +33,7 @@ import { userRt } from "./routes/userRt";
 
     // Routes and Port
     app.use("/api/auth", userRt);
+    app.use("/api/todos", todoRt);
     const port = process.env.PORT || 9000;
     app.listen(port, () => {
         console.log(`Server: http://localhost:${port}`);
