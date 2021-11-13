@@ -31,7 +31,42 @@ async (req, res, next) => {
     }
 };
 
+export const GetOneTodo: express.RequestHandler =
+async (req, res, next) => {
+    try {
+        await Todo.findById(req.params.id)
+        .then((todo) => res.status(200).json(todo));
+    } catch (error) {
+        res.status(500).json(error);
+        next(error);
+    }
+};
 
+export const UpdateTodo: express.RequestHandler =
+async (req, res, next) => {
+    try {
+        const { id } = req.params;
+        const { title, completed } = req.body;
+        await Todo.findByIdAndUpdate(id, {
+            title, completed
+        })
+        .then(() => res.status(200).json("Todo Updated!"));
+    } catch (error) {
+        res.status(500).json(error);
+        next(error);
+    }
+};
+
+export const DeleteTodo: express.RequestHandler =
+async (req, res, next) => {
+    try {
+        await Todo.findByIdAndDelete(req.params.id)
+        .then(() => res.status(200).json("The Todo was Deleted!"));
+    } catch (error) {
+        res.status(500).json(error);
+        next(error);
+    }
+};
 
 
 
