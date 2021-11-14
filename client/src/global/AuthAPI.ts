@@ -26,7 +26,7 @@ export const AuthAPI = createApi({
             }),
             invalidatesTags: [{ type: "Auth", id: "LIST"}],
         }),
-        private: builder.mutation<IUser, string>({
+        private: builder.mutation<IUser, IUser>({
             query: (token) => ({
                 url: `private`,
                 method: "POST",

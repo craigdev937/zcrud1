@@ -24,10 +24,10 @@ const InputText = styled.input`
     margin-top: 5px;
     outline: none;
     border-radius: 4px;
-    &:nth-child(4) {
+    input:nth-child(4) {
         margin-bottom: 5px;
     }
-    &:nth-child(5) {
+    input:nth-child(5) {
         align-self: center;
         width: 50%;
         border: none;
