@@ -20,10 +20,10 @@ const AuthSlice = createSlice({
             state.token = action.payload;
         },
         saveUser(state, action: PayloadAction<IUserState>) {
-            state.user = action.payload;
-        },
-        removeUser(state, action: PayloadAction<IUserState>) {
             state.user = action.payload.user;
+        },
+        removeUser(state, action: PayloadAction<any>) {
+            state.user = action.payload;
         },
     },
 });
