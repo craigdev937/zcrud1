@@ -1,15 +1,18 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { setupListeners } from "@reduxjs/toolkit/query";
 import { AuthAPI } from "./AuthAPI";
+import { TodoAPI } from "./TodoAPI";
 import { AuthReducer } from "./AuthSlice";
 
 export const RootReducer = configureStore({
     reducer: {
         auth: AuthReducer,
         [AuthAPI.reducerPath]: AuthAPI.reducer,
+        [TodoAPI.reducerPath]: TodoAPI.reducer,
     },
-    // gDM = getDefaultMiddleware
-    middleware: (gDM) => gDM().concat(AuthAPI.middleware),
+    middleware: (gDM) => gDM()   // gDM = getDefaultMiddleware
+    .concat(AuthAPI.middleware)
+    .concat(TodoAPI.middleware),
 });
 
 setupListeners(RootReducer.dispatch);
